@@ -67,4 +67,7 @@ function fetchMeals(category) {
 // Save meal data to console
 function saveMeal(meal) {
     console.log("Saved meal data:", meal);
+
+    fetch(`http://localhost:8081/api/chat/${encodeURIComponent("Suggest ingredients and write a recipe for " + meal.strMeal)}`)
+        .then(response => response.json()).then(obj => console.log(obj.choices[0].message.content));
 }

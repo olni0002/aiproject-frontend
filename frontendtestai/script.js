@@ -64,10 +64,7 @@ function fetchMeals(category) {
         .catch(err => console.error('Error fetching meals:', err));
 }
 
-// Save meal data to console
+// Open new tab with recipe
 function saveMeal(meal) {
-    console.log("Saved meal data:", meal);
-
-    fetch(`http://localhost:8081/api/chat/${encodeURIComponent("Suggest ingredients and write a recipe for " + meal.strMeal)}`)
-        .then(response => response.json()).then(obj => console.log(obj.choices[0].message.content));
+    window.open(`${window.location.origin}/airesponse.html?meal=${encodeURIComponent(meal.strMeal)}`);
 }
